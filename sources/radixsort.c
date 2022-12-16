@@ -5,7 +5,6 @@
 ** Pushswap entry point
 */
 
-#include <stdint.h>
 #include "../include/pushswap.h"
 
 void binary_length(pushswap_t *self)
@@ -51,5 +50,5 @@ void radix_sort(pushswap_t *self)
     int32_t binary_len = self->meta->binary_len;
     for (int32_t bit = 0; bit < binary_len; bit++)
         loop_numbers(self, bit);
-    write(1, "rb", 2);
+    write(1, "ra rra", 6);
 }
