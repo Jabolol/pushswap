@@ -14,6 +14,7 @@
     #include <stdlib.h>
     #include <string.h>
     #include <unistd.h>
+    #include <stdbool.h>
 
     #define NEW(type_t, class_ptr, ...)                  \
         ({                                               \
@@ -22,12 +23,12 @@
             constructor(class_ptr, __VA_ARGS__);         \
         })
 
-    #define FUNCTIONS                                   \
-        &parse_array, &build_list, &swap_pointers,      \
-        &split, &quicksort, &free_list, &binary_length, \
-        &create_node, &remove_node, &move_node,         \
-        &loop_numbers, &push_or_shift, &radix_sort,     \
-        &destroy, NULL
+    #define FUNCTIONS                                    \
+        &parse_array, &check_sorted, &build_list,        \
+        &swap_pointers, &split, &quicksort, &free_list,  \
+        &binary_length, &create_node, &remove_node,      \
+        &move_node, &loop_numbers, &push_or_shift,       \
+        &radix_sort, &destroy, NULL
 
 typedef struct node node_t;
 typedef struct pushswap pushswap_t;
@@ -44,6 +45,7 @@ typedef struct metadata {
     int32_t highest;
     int32_t binary_len;
     int32_t length;
+    bool is_sorted;
 } metadata_t;
 
 typedef struct pushswap {
@@ -55,6 +57,7 @@ typedef struct pushswap {
 
     /* METHODS */
     void (*parse_array)(pushswap_t *, int32_t, char **);
+    void (*check_sorted)(pushswap_t *self);
     node_t *(*build_list)(pushswap_t *, int32_t *, int32_t);
     void (*swap_pointers)(int32_t **, int32_t **);
     int32_t (*split)(pushswap_t *, int32_t **, int32_t, int32_t);
@@ -88,4 +91,5 @@ void loop_numbers(pushswap_t *self, int32_t bit);
 void free_list(node_t *root);
 void destroy(pushswap_t *self);
 int my_getnbr(char const *str);
+void check_sorted(pushswap_t *self);
 #endif
