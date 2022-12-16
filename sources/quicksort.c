@@ -27,7 +27,7 @@ int32_t split(pushswap_t *self, int32_t **array, int32_t low, int32_t high)
 
 void quicksort(pushswap_t *self, int32_t **array, int32_t low, int32_t high)
 {
-    if (low > high)
+    if (low > high || self->meta->is_sorted)
         return;
     int32_t pivot_position = self->split(self, array, low, high);
     self->quicksort(self, array, low, pivot_position - 1);
