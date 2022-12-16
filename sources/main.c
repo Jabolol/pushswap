@@ -27,7 +27,6 @@ int32_t main(int32_t argc, char **argv)
     metadata_t *meta = malloc(sizeof(metadata_t));
     node_t *root1 = malloc(sizeof(node_t));
     node_t *root2 = malloc(sizeof(node_t));
-
     if (argc <= 2) {
         argc == 2 ? write(1, "\n", 1) : -1;
         return argc == 2 ? 0 : 84;
@@ -41,6 +40,6 @@ int32_t main(int32_t argc, char **argv)
     class->binary_length(class);
     class->radix_sort(class);
     class->destroy(class);
-    write(1, "rb\n", 3);
+    write(1, "\n", 1);
     return 0;
 }
