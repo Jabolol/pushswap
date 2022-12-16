@@ -46,7 +46,10 @@ void loop_numbers(pushswap_t *self, int32_t bit)
 
 void radix_sort(pushswap_t *self)
 {
+    if (self->meta->is_sorted)
+        return;
     int32_t binary_len = self->meta->binary_len;
     for (int32_t bit = 0; bit < binary_len; bit++)
         loop_numbers(self, bit);
+    write(1, "rb", 2);
 }
