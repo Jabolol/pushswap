@@ -17,6 +17,7 @@ void parse_array(pushswap_t *self, int32_t argc, char **argv)
         self->meta->stack1[i - 1] = my_getnbr(argv[i]);
         self->meta->stack1_ptrs[i - 1] = &self->meta->stack1[i - 1];
     }
+    self->check_sorted(self);
     free(self->root1);
     free(self->root2);
     self->root2 = NULL;
@@ -68,4 +69,15 @@ void destroy(pushswap_t *self)
     free(self->meta->stack1_ptrs);
     free(self->meta);
     free(self);
+}
+
+void check_sorted(pushswap_t *self)
+{
+    for (int i = 0; i < self->meta->length - 1; i++) {
+        if (self->meta->stack1[i] > self->meta->stack1[i + 1]) {
+            self->meta->is_sorted = false;
+            return;
+        }
+    }
+    self->meta->is_sorted = true;
 }
