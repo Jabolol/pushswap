@@ -9,7 +9,7 @@
 
 void binary_length(pushswap_t *self)
 {
-    for (int32_t bits = 30; bits >= 0; bits--) {
+    for (int32_t bits = MSB; bits >= 0; bits--) {
         if ((self->meta->highest >> bits) & 1) {
             self->meta->binary_len = bits + 1;
             return;
