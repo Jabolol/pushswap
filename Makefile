@@ -109,15 +109,15 @@ dev_clean:
 unit_tests:
 	$(MAKE) fclean
 	$(MAKE) $(LIB_NAME)
-	@ printf '${BLUE}Compiling game binary...${NORMAL}\n'
+	@ printf '${BLUE}Compiling test binary...${NORMAL}\n'
 	$(CC) -o $(TEST_BINARY) ${TEST_FILES} ${LIB_NAME} \
 	$(TEST_DIR)/$(TEST_FILE) $(TEST_FLAGS)
 
 tests_run:
-	@ printf '${PURPLE}Executing ${GREEN}run_tests${PURPLE} rule.${NORMAL}\n'
+	@ printf '${PURPLE}Executing ${GREEN}tests_run${PURPLE} rule.${NORMAL}\n'
 	@ $(MAKE) unit_tests
-	@ printf '${BLUE}Executing game report...${NORMAL}\n'
-	./$(TEST_BINARY)
+	@ printf '${BLUE}Executing test report...${NORMAL}\n'
+	./$(TEST_BINARY) 1 3 2 -1
 	$(GCOVR_PATH) --exclude $(TEST_DIR)
 	$(MAKE) fclean
 
