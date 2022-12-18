@@ -29,6 +29,8 @@
         &binary_length, &create_node, &remove_node,      \
         &move_node, &loop_numbers, &push_or_shift,       \
         &radix_sort, &destroy, NULL
+    
+    #define MSB 30
 
 typedef struct node node_t;
 typedef struct pushswap pushswap_t;
@@ -57,7 +59,7 @@ typedef struct pushswap {
 
     /* METHODS */
     void (*parse_array)(pushswap_t *, int32_t, char **);
-    void (*check_sorted)(pushswap_t *self);
+    void (*check_sorted)(pushswap_t *);
     node_t *(*build_list)(pushswap_t *, int32_t *, int32_t);
     void (*swap_pointers)(int32_t **, int32_t **);
     int32_t (*split)(pushswap_t *, int32_t **, int32_t, int32_t);
@@ -90,6 +92,6 @@ node_t *build_list(pushswap_t *self, int32_t *arr, int32_t length);
 void loop_numbers(pushswap_t *self, int32_t bit);
 void free_list(node_t *root);
 void destroy(pushswap_t *self);
-int my_getnbr(char const *str);
+int32_t my_getnbr(char const *str);
 void check_sorted(pushswap_t *self);
 #endif
