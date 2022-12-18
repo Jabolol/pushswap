@@ -29,7 +29,7 @@
         &binary_length, &create_node, &remove_node,      \
         &move_node, &loop_numbers, &push_or_shift,       \
         &radix_sort, &destroy, NULL
-    
+
     #define MSB 30
 
 typedef struct node node_t;
