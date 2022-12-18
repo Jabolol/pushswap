@@ -73,7 +73,7 @@ void destroy(pushswap_t *self)
 
 void check_sorted(pushswap_t *self)
 {
-    for (int i = 0; i < self->meta->length - 1; i++) {
+    for (int32_t i = 0; i < self->meta->length - 1; i++) {
         if (self->meta->stack1[i] > self->meta->stack1[i + 1]) {
             self->meta->is_sorted = false;
             return;
